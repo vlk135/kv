@@ -1,0 +1,55 @@
+import turtle
+from turtle import *
+import math
+
+
+KK = turtle.Turtle()
+
+
+def start(*args):
+    info = list(args)
+    if len(info) == 3:
+        iterace = info[0]
+        barva = info[1]
+        pozadi = info[2]
+        print(info)
+    else:
+        iterace = 4
+        barva = 'white'
+        pozadi = 'blue'
+    if type(iterace) != int:
+        iterace = 4
+    if type(barva) != str:
+        barva = 'blue'
+    if type(pozadi) != str:
+        pozadi = 4
+    KK.color(barva)
+    bgcolor(pozadi)
+    vzdalenost=900
+    KK.up()
+    KK.setx(vzdalenost / -2)
+    KK.down()
+    pohyb(iterace,vzdalenost)
+    pass
+    
+
+def pohyb(itr,vzd):
+    pomoc = (math.sqrt(2)/2)*(vzd/6)
+    if itr==0:
+        KK.forward(vzd)
+    else :
+        pohyb(itr-1,vzd/3)
+        KK.left(45)
+        pohyb(itr-1,pomoc)
+        KK.right(90)
+        pohyb(itr-1,pomoc)
+        KK.left(45)
+        pohyb(itr-1,vzd/3)
+    pass
+
+    
+
+
+print("Vytejte v kochove krivce")
+KK.up()
+iterace=1
